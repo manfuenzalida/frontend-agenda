@@ -60,6 +60,7 @@ export class ApiBackendService {
   logout() {
     localStorage.removeItem('user');
     this.activa_sesion$.emit(false);
+    this.rol_usuario=null;
     this.router.navigate(['/login']);
   }
 
