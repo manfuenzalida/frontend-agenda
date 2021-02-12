@@ -1,0 +1,58 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12 ">
+            <h2 class="text-center">Crea tu actividad</h2>
+            <form [formGroup]="activityForm" class="mt-4 " (ngSubmit)="onSave()">
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="name">Name</label>
+                    <input type="text" id="name" name="name" formControlName="name" class="form-control" />
+                </div>
+                <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error alert alert-danger">
+                    <div *ngIf="name.errors.required">
+                        El name es requerido!!
+                    </div>
+
+                </div>
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="descripcion">Descripción</label>
+                    <input type="text" id="descripcion" name="descripcion" formControlName="descripcion"
+                        class="form-control" />
+                </div>
+                <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)"
+                    class="error alert alert-danger">
+                    <div *ngIf="descripcion.errors.required">
+                        La descripción es requerida!!
+                    </div>
+                </div>
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="fecha">Fecha</label>
+                    <input type="date" id="fecha" name="fecha" formControlName="fecha" class="form-control" />
+                </div>
+                <div *ngIf="fecha.invalid && (fecha.dirty || fecha.touched)" class="error alert alert-danger">
+                    <div *ngIf="fecha.errors.required">
+                        La fecha es requerida!!
+                    </div>
+                </div>
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="hora">Hora</label>
+                    <input type="text" id="horaInicio" name="hora" formControlName="hora" class="form-control" />
+                </div>
+                <div *ngIf="hora.invalid && (hora.dirty || hora.touched)" class="error alert alert-danger">
+                    <div *ngIf="hora.errors.required">
+                        La hora es requerida!!
+                    </div>
+                </div>
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="temaId">Tema</label>
+                    <select (change)="onSelectedTema($event.target.value)">
+                        <option>seleccione</option>
+                        <option *ngFor="let tema of temasActivity" value="{{tema._id}}">{{tema.name}}</option>
+                    </select>
+                </div>
+
+                <button [disabled]="activityForm.invalid" type="submit"
+                    class="btn btn-primary btn-block mb-4">Crear</button>
+            </form>
+        </div>
+    </div>
+</div>

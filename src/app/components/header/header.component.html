@@ -1,0 +1,17 @@
+<header>
+    <div class="mt-3 ml-5 mb-3">Hoy: {{ fecha | date : 'fullDate': '':'es' }}
+    </div>
+    <span class="spacer"></span>
+    <div *ngIf="this.apiBackendService.activa_sesion$" class="mt-2 mb-2">
+        <div *ngIf="this.apiBackendService.rol_usuario=='admin'">
+            <button type="button" id="btn-volver" [routerLink]="['/listar-todas-actividades']"
+                class=" btn btn-warning mr-2">Listar</button>
+            <button type="button" id="btn-volver" [routerLink]="['/logout']" class=" btn btn-warning">Salir</button>
+        </div>
+        <div *ngIf="this.apiBackendService.rol_usuario=='user'">
+            <button type="button" id="btn-volver" [routerLink]="['/crear']" class=" btn btn-warning mr-2">Crear</button>
+            <button type="button" id="btn-volver" [routerLink]="['/list']" class=" btn btn-warning mr-2">Listar</button>
+            <button type="button" id="btn-volver" [routerLink]="['/logout']" class=" btn btn-warning">Salir</button>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,35 @@
+<div class="container">
+    <div class=" row mt-4 ">
+        <h1>Mis Actividades</h1>
+        <div class="mt-4 col-12">
+
+            <h3 class="mt-5 mb-3">Mi Agenda</h3>
+
+            <h2 *ngIf="actividades?.length===0">
+                -- Usuario Sin Datos --
+            </h2>
+            <table *ngIf="actividades && actividades?.length" class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Hora</th>
+                        <th scope="col">Tema</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let actividad of actividades; index as i">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{actividad.name}}</td>
+                        <td>{{actividad.descripcion}}</td>
+                        <td class="text-right">{{actividad.fecha | date : 'shortDate': '':'es' }}</td>
+                        <td>{{actividad.hora}}</td>
+                        <td class="text-center">{{actividad.temaId}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+.spacer {
+  flex: 1 auto;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(232, 117, 10);
+  color: aliceblue;
+  font-size: larger;
+  font-weight: bold;
+}

@@ -1,0 +1,33 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <div *ngIf="error" class="error alert alert-danger mt-3">
+            {{error.message}}
+        </div>
+        <div class="fadeIn first">
+            <img src="../../assets/img/bat.png" style="width:200px" id="icon" alt="User Icon" />
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+            <input type="text" id="email" class="fadeIn second" formControlName="email" name="email"
+                placeholder="email">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error alert alert-danger">
+                <div *ngIf="email.errors.required">
+                    Su email es requerido!!
+                </div>
+                <div *ngIf="email.errors.email">
+                    Formato de mail inválido!!
+                </div>
+            </div>
+            <input type="password" id="password" class="fadeIn third" formControlName="password" name="login"
+                placeholder="password">
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error alert alert-danger">
+                <div *ngIf="password.errors.required">
+                    Su password es requerido!!
+                </div>
+                <div *ngIf="password.errors.minlength">
+                    Mínimo 6 caracteres!!
+                </div>
+            </div>
+            <input [disabled]="loginForm.invalid" type="submit" class="fadeIn fourth" value="Log In">
+        </form>
+    </div>
+</div>
